@@ -28,18 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.close = new System.Windows.Forms.Button();
+            this.Enlarge = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, 4);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 878);
+            this.panel1.Size = new System.Drawing.Size(378, 894);
             this.panel1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(12, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(374, 36);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Picture Purge";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
@@ -54,20 +74,67 @@
             this.button1.Text = "Select Folder";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // close
+            // 
+            this.close.BackColor = System.Drawing.Color.Transparent;
+            this.close.FlatAppearance.BorderSize = 0;
+            this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.close.Font = new System.Drawing.Font("Century Gothic", 16.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.close.Location = new System.Drawing.Point(1532, -2);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(66, 62);
+            this.close.TabIndex = 1;
+            this.close.Text = "×";
+            this.close.UseVisualStyleBackColor = false;
+            this.close.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Enlarge
+            // 
+            this.Enlarge.BackColor = System.Drawing.Color.Transparent;
+            this.Enlarge.FlatAppearance.BorderSize = 0;
+            this.Enlarge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Enlarge.Font = new System.Drawing.Font("Century Gothic", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Enlarge.Location = new System.Drawing.Point(1460, 5);
+            this.Enlarge.Name = "Enlarge";
+            this.Enlarge.Size = new System.Drawing.Size(66, 62);
+            this.Enlarge.TabIndex = 2;
+            this.Enlarge.Text = "☐";
+            this.Enlarge.UseVisualStyleBackColor = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(436, 70);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(972, 47);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "No selected folder.";
+            // 
             // Form1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1594, 883);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1596, 889);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.Enlarge);
+            this.Controls.Add(this.close);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.Text = "Picture Purge";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,6 +142,10 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button close;
+        private System.Windows.Forms.Button Enlarge;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
