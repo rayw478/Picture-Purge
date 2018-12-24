@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
     {
         Point lastPoint; //for dragging window
         bool isFolderSelected = false;
+        FolderBrowserDialog fbd;    
 
         public Form1()
         {
@@ -47,17 +48,26 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var fbd = new FolderBrowserDialog();
+            fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
 
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
                 string[] files = Directory.GetFiles(fbd.SelectedPath);
 
-                if (files.Length == 0)
+                while (files.Length == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show("No files in selected folder. Reselect?");
+                    var res = System.Windows.Forms.MessageBox.Show("No files in selected folder. Reselect?", "Error", MessageBoxButtons.RetryCancel);
+                    if (res == DialogResult.Cancel)
+                    {
+                        this.Close();
+                    } else
+                    {
+                        result = fbd.ShowDialog();
+                        files = Directory.GetFiles(fbd.SelectedPath);
+                    }
                 }
+                isFolderSelected = true;
                 System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
                 selectedFolder.Text = "Selected folder: " + fbd.SelectedPath;
             }
@@ -65,10 +75,21 @@ namespace WindowsFormsApp1
 
         private void analyze_Click(object sender, EventArgs e)
         {
+            System.Threading.Thread uiUpdater;
             if (isFolderSelected)
             {
                 //TODO
-                // iterate through files, analyze
+                // iterate through files, 
+                string[] files = Directory.GetFiles(fbd.SelectedPath);
+                analyzeProgress.Maximum = files.Length;
+                uiUpdater = new System.Threading.Thread(null);
+                for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
+                {
+                    //do somethin
+                    analyzeProgress.Value = i + 1;
+                    currentFile.Text = "Current File: " + files.GetValue(i);
+                    System.Threading.Thread.Sleep(15); //temporary simulation
+                }
             } else
             {
                 System.Windows.Forms.MessageBox.Show("Select a folder first!");
