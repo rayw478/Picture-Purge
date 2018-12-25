@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
                 // iterate through files, 
                 string[] files = Directory.GetFiles(fbd.SelectedPath);
                 analyzeProgress.Maximum = files.Length;
-                uiUpdater = new System.Threading.Thread(null);
+                // = new System.Threading.Thread(null);
                 for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
                 {
                     //do somethin
