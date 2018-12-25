@@ -90,10 +90,21 @@ namespace WindowsFormsApp1
                     currentFile.Text = "Current File: " + files.GetValue(i);
                     System.Threading.Thread.Sleep(15); //temporary simulation
                 }
+                currentFile.Text = "Current File: Done!";
             } else
             {
                 System.Windows.Forms.MessageBox.Show("Select a folder first!");
             }
+        }
+
+        private void currentFile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void minimize_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
