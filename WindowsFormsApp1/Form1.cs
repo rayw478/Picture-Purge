@@ -54,10 +54,13 @@ namespace WindowsFormsApp1
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
                 string[] files = Directory.GetFiles(fbd.SelectedPath);
+                string[] subfolders = Directory.GetDirectories(fbd.SelectedPath);
 
-                while (files.Length == 0)
+                while (files.Length == 0 && subfolders.Length == 0)
                 {
-                    var res = System.Windows.Forms.MessageBox.Show("No files in selected folder. Reselect?", "Error", MessageBoxButtons.RetryCancel);
+                    var res = System.Windows.Forms.MessageBox.Show("No files in selected folder. Reselect?", 
+                                                                   "Error", 
+                                                                   MessageBoxButtons.RetryCancel);
                     if (res == DialogResult.Cancel)
                     {
                         this.Close();
