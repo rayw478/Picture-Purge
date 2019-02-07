@@ -76,28 +76,75 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void analyze_Click(object sender, EventArgs e)
-        {
-            System.Threading.Thread uiUpdater;
+        private void analyze_Click(object sender, EventArgs e) {
+
             if (isFolderSelected)
             {
-                //TODO
-                // iterate through files, 
+                BackgroundWorker bgAnalyzer = new BackgroundWorker();
+                bgAnalyzer.WorkerReportsProgress = true;
                 string[] files = Directory.GetFiles(fbd.SelectedPath);
-                analyzeProgress.Maximum = files.Length;
-                // = new System.Threading.Thread(null);
-                for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
+                int max = files.Length;
+                string currentFileName = "test";
+
+                bgAnalyzer.DoWork += new DoWorkEventHandler(delegate (object o, DoWorkEventArgs args)
                 {
-                    //do somethin
-                    analyzeProgress.Value = i + 1;
-                    currentFile.Text = "Current File: " + files.GetValue(i);
-                    System.Threading.Thread.Sleep(15); //temporary simulation
-                }
-                currentFile.Text = "Current File: Done!";
-            } else
+                    BackgroundWorker b = o as BackgroundWorker;
+                    //string[] files = Directory.GetFiles(fbd.SelectedPath);
+                    //int max = files.Length;
+                    // = new System.Threading.Thread(null);
+                    for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
+                    {
+                        //do somethin
+                       
+                        currentFileName = (string) files.GetValue(i);
+                        b.ReportProgress(i);
+                        System.Threading.Thread.Sleep(5); //temporary simulation
+                    }
+
+                });
+
+                bgAnalyzer.ProgressChanged += new ProgressChangedEventHandler(delegate (object o, ProgressChangedEventArgs args)
+                {
+                    analyzeProgress.Value = args.ProgressPercentage;
+                    currentFile.Text = "Current File: " + currentFileName;
+                });
+
+                bgAnalyzer.RunWorkerCompleted += new RunWorkerCompletedEventHandler(delegate (object o, RunWorkerCompletedEventArgs args) {
+                    analyzeProgress.Value = 100;
+                    currentFile.Text = "Done!";
+                });
+
+                bgAnalyzer.RunWorkerAsync();
+
+
+            }
+            else
             {
                 System.Windows.Forms.MessageBox.Show("Select a folder first!");
             }
+
+
+
+            //System.Threading.Thread uiUpdater;
+            //if (isFolderSelected)
+            //{
+            //    //TODO
+            //    // iterate through files, 
+            //    string[] files = Directory.GetFiles(fbd.SelectedPath);
+            //    analyzeProgress.Maximum = files.Length;
+            //    // = new System.Threading.Thread(null);
+            //    for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
+            //    {
+            //        //do somethin
+            //        analyzeProgress.Value = i + 1;
+            //        currentFile.Text = "Current File: " + files.GetValue(i);
+            //        System.Threading.Thread.Sleep(15); //temporary simulation
+            //    }
+            //    currentFile.Text = "Current File: Done!";
+            //} else
+            //{
+            //    System.Windows.Forms.MessageBox.Show("Select a folder first!");
+            //}
         }
 
         private void currentFile_TextChanged(object sender, EventArgs e)
