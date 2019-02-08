@@ -83,19 +83,16 @@ namespace WindowsFormsApp1
                 BackgroundWorker bgAnalyzer = new BackgroundWorker();
                 bgAnalyzer.WorkerReportsProgress = true;
                 string[] files = Directory.GetFiles(fbd.SelectedPath);
+
                 int max = files.Length;
-                string currentFileName = "test";
+                analyzeProgress.Maximum = max;
+                string currentFileName = "";
 
                 bgAnalyzer.DoWork += new DoWorkEventHandler(delegate (object o, DoWorkEventArgs args)
                 {
                     BackgroundWorker b = o as BackgroundWorker;
-                    //string[] files = Directory.GetFiles(fbd.SelectedPath);
-                    //int max = files.Length;
-                    // = new System.Threading.Thread(null);
                     for (int i = 0; i < Directory.GetFiles(fbd.SelectedPath).Length; i++)
                     {
-                        //do somethin
-                       
                         currentFileName = (string) files.GetValue(i);
                         b.ReportProgress(i);
                         System.Threading.Thread.Sleep(5); //temporary simulation
@@ -110,7 +107,7 @@ namespace WindowsFormsApp1
                 });
 
                 bgAnalyzer.RunWorkerCompleted += new RunWorkerCompletedEventHandler(delegate (object o, RunWorkerCompletedEventArgs args) {
-                    analyzeProgress.Value = 100;
+                    analyzeProgress.Value = max;
                     currentFile.Text = "Done!";
                 });
 
