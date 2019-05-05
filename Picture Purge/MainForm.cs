@@ -11,13 +11,13 @@ using System.IO;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         Point lastPoint; //for dragging window
         bool isFolderSelected = false;
         FolderBrowserDialog fbd;    
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -26,7 +26,8 @@ namespace WindowsFormsApp1
         {
 
         }
-
+        
+        // Handles dragging of the window
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -152,6 +153,16 @@ namespace WindowsFormsApp1
         private void minimize_KeyDown(object sender, KeyEventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void analyzeProgress_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectedFolder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

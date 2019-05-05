@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.controlPanel = new System.Windows.Forms.Panel();
+            this.Name = new System.Windows.Forms.Label();
             this.analyze = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.selectFolder = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
-            this.Enlarge = new System.Windows.Forms.Button();
+            this.enlarge = new System.Windows.Forms.Button();
             this.analyzeProgress = new System.Windows.Forms.ProgressBar();
             this.minimize = new System.Windows.Forms.Button();
-            this.Name = new System.Windows.Forms.Label();
             this.selectedFolder = new System.Windows.Forms.Label();
             this.currentFile = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.controlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // controlPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.Name);
-            this.panel1.Controls.Add(this.analyze);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(189, 447);
-            this.panel1.TabIndex = 0;
+            this.controlPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.controlPanel.Controls.Add(this.Name);
+            this.controlPanel.Controls.Add(this.analyze);
+            this.controlPanel.Controls.Add(this.selectFolder);
+            this.controlPanel.Location = new System.Drawing.Point(0, -1);
+            this.controlPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(189, 447);
+            this.controlPanel.TabIndex = 0;
+            // 
+            // Name
+            // 
+            this.Name.AutoSize = true;
+            this.Name.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Name.Location = new System.Drawing.Point(4, 3);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(85, 17);
+            this.Name.TabIndex = 7;
+            this.Name.Text = "Picture Purge";
             // 
             // analyze
             // 
@@ -68,20 +79,20 @@
             this.analyze.UseVisualStyleBackColor = true;
             this.analyze.Click += new System.EventHandler(this.analyze_Click);
             // 
-            // button1
+            // selectFolder
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(32, 77);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 78);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Select Folder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.selectFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.selectFolder.FlatAppearance.BorderSize = 0;
+            this.selectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectFolder.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.selectFolder.Location = new System.Drawing.Point(32, 77);
+            this.selectFolder.Margin = new System.Windows.Forms.Padding(2);
+            this.selectFolder.Name = "selectFolder";
+            this.selectFolder.Size = new System.Drawing.Size(125, 78);
+            this.selectFolder.TabIndex = 0;
+            this.selectFolder.Text = "Select Folder";
+            this.selectFolder.UseVisualStyleBackColor = true;
+            this.selectFolder.Click += new System.EventHandler(this.button1_Click);
             // 
             // close
             // 
@@ -99,19 +110,19 @@
             this.close.UseVisualStyleBackColor = false;
             this.close.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Enlarge
+            // enlarge
             // 
-            this.Enlarge.BackColor = System.Drawing.Color.Transparent;
-            this.Enlarge.FlatAppearance.BorderSize = 0;
-            this.Enlarge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Enlarge.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Enlarge.Location = new System.Drawing.Point(708, 0);
-            this.Enlarge.Margin = new System.Windows.Forms.Padding(2);
-            this.Enlarge.Name = "Enlarge";
-            this.Enlarge.Size = new System.Drawing.Size(45, 30);
-            this.Enlarge.TabIndex = 2;
-            this.Enlarge.Text = "☐";
-            this.Enlarge.UseVisualStyleBackColor = false;
+            this.enlarge.BackColor = System.Drawing.Color.Transparent;
+            this.enlarge.FlatAppearance.BorderSize = 0;
+            this.enlarge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enlarge.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enlarge.Location = new System.Drawing.Point(708, 0);
+            this.enlarge.Margin = new System.Windows.Forms.Padding(2);
+            this.enlarge.Name = "enlarge";
+            this.enlarge.Size = new System.Drawing.Size(45, 30);
+            this.enlarge.TabIndex = 2;
+            this.enlarge.Text = "☐";
+            this.enlarge.UseVisualStyleBackColor = false;
             // 
             // analyzeProgress
             // 
@@ -120,6 +131,7 @@
             this.analyzeProgress.Name = "analyzeProgress";
             this.analyzeProgress.Size = new System.Drawing.Size(486, 35);
             this.analyzeProgress.TabIndex = 4;
+            this.analyzeProgress.Click += new System.EventHandler(this.analyzeProgress_Click);
             // 
             // minimize
             // 
@@ -134,17 +146,6 @@
             this.minimize.UseVisualStyleBackColor = true;
             this.minimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.minimize_KeyDown);
             // 
-            // Name
-            // 
-            this.Name.AutoSize = true;
-            this.Name.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Name.Location = new System.Drawing.Point(4, 3);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(85, 17);
-            this.Name.TabIndex = 7;
-            this.Name.Text = "Picture Purge";
-            // 
             // selectedFolder
             // 
             this.selectedFolder.AutoSize = true;
@@ -153,6 +154,7 @@
             this.selectedFolder.Size = new System.Drawing.Size(134, 21);
             this.selectedFolder.TabIndex = 7;
             this.selectedFolder.Text = "Selected Folder:";
+            this.selectedFolder.Click += new System.EventHandler(this.selectedFolder_Click);
             // 
             // currentFile
             // 
@@ -163,7 +165,7 @@
             this.currentFile.TabIndex = 8;
             this.currentFile.Text = "Current File:";
             // 
-            // Form1
+            // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -174,20 +176,21 @@
             this.Controls.Add(this.selectedFolder);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.analyzeProgress);
-            this.Controls.Add(this.Enlarge);
+            this.Controls.Add(this.enlarge);
             this.Controls.Add(this.close);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.controlPanel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Picture Purge";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.controlPanel.ResumeLayout(false);
+            this.controlPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,10 +198,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel controlPanel;
+        private System.Windows.Forms.Button selectFolder;
         private System.Windows.Forms.Button close;
-        private System.Windows.Forms.Button Enlarge;
+        private System.Windows.Forms.Button enlarge;
         private System.Windows.Forms.Button analyze;
         private System.Windows.Forms.ProgressBar analyzeProgress;
         private System.Windows.Forms.Button minimize;
